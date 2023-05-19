@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import '../styles/createTodo.css'
 
-export function CreateTodo (){
+export function CreateTodo (props){
     const [newTodo, setnewTodo] = useState()
     
     function handleChange(e){
@@ -20,6 +20,7 @@ export function CreateTodo (){
             .post("http://localhost:3001/api/todo", data)
             .then((res) =>{
                 setnewTodo()
+                props.fetchTodo()
                 console.log(res.data.message)
             })
             .catch((err)=>{

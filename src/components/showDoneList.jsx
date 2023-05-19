@@ -1,19 +1,6 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
 import "../styles/showDoneList.css"
 
-export function DoneList(){
-    const [doneList, setdoneList] = useState([])
-
-    const toggleCheckBox = (id) =>{
-        axios
-            .put(`http://localhost:3001/api/todo/${id}`)
-            .then((res)=>{
-                console.log(`toggled successful, ${res.data}`)
-            }).catch((res)=>{
-                console.log(`toggle failed. Error: ${res.err.message}`)
-            })
-    }
+export function DoneList(props){
 
     function DoneTodoTask({ data }) {
         const { _id, content, complete } = data;
@@ -26,7 +13,7 @@ export function DoneList(){
                             id={`todo_${_id}`} 
                             className="checkbox" 
                             checked={complete} 
-                            onChange={() => toggleCheckBox(_id)} 
+                            onChange={() => props.handleCheckBox(_id)} 
                         />
                         <label>
                             {content}
@@ -41,25 +28,13 @@ export function DoneList(){
         )
     }
 
-    useEffect(() => {
-        axios
-            .get("http://localhost:3001/api/todo/done_todo")
-            .then((res)=>{
-                console.log(res.data)
-                setdoneList(res.data)
-            })
-            .catch((err) =>{
-                console.log(err)
-            })
-    }, [])
-
     return (
             <section >
                 <h1>Done</h1>
                 <hr className="thick-line"/>
                     <div >
-                        {doneList.map((data) => (
-                        <DoneTodoTask key={data._id} data={data} />
+                        {props.doneList.map((doneTodo) => (
+                        <DoneTodoTask key={doneTodo._id} data={doneTodo} />
                         ))}
                     </div>
             </section>
