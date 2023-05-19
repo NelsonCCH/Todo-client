@@ -1,27 +1,25 @@
 .input {
-    border-radius: 15px;
-    background-color: white;
-    padding: 10px;
-    margin-right: 10px;
-    min-width: 200px; 
-    max-width: 500px;
-    overflow-wrap: break-word;
-    resize: none;
+  border-radius: 15px;
+  background-color: white;
+  padding: 10px;
+  margin-right: 10px;
+  min-width: 200px;
+  max-width: 500px;
+  overflow-wrap: break-word;
+  resize: none;
 }
 
-
-
-
 .button {
-    border-radius: 15px;
-    background-color: lightblue;
-    color: white;
-    border: none;
-    cursor: pointer;
-    padding: 10px 20px;
+  border-radius: 15px;
+  background-color: lightblue;
+  color: rgb(0, 0, 0);
+  border: 2px solid rgb(0, 0, 0); /* Add a solid border */
+  cursor: pointer;
+  padding: 10px 20px;
+  font-weight: bold; /* Make the text bold */
 }
 
 .form-container {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }

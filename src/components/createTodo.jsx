@@ -1,61 +1,52 @@
 import { useState } from "react";
 import axios from "axios";
-import '../styles/createTodo.css'
+import "../styles/createTodo.css";
 
-export function CreateTodo (props){
-    const [newTodo, setnewTodo] = useState()
-    
-    function handleChange(e){
-        setnewTodo(e.target.value)
-    }
+export function CreateTodo(props) {
+  const [newTodo, setnewTodo] = useState("");
 
-    function handleSubmit(e){
-        e.preventDefault()
+  function handleChange(e) {
+    setnewTodo(e.target.value);
+  }
 
-        console.log(newTodo)
+  function handleSubmit(e) {
+    e.preventDefault();
 
-        const data = {"content": newTodo}
+    console.log(newTodo);
 
-        axios
-            .post("http://localhost:3001/api/todo", data)
-            .then((res) =>{
-                setnewTodo()
-                props.fetchTodo()
-                console.log(res.data.message)
-            })
-            .catch((err)=>{
-                console.log(`Create new Todo fail. ${err.message}`)
-            })
+    const data = { content: newTodo };
 
-    }
+    axios
+      .post("http://localhost:3001/api/todo", data)
+      .then((res) => {
+        setnewTodo("");
+        props.fetchData();
+        console.log(res.data.message);
+      })
+      .catch((err) => {
+        console.log(`Create new Todo fail. ${err.message}`);
+      });
+  }
 
-    return (
-        <section>
-            <section className="contents">
-                <form 
-                    onSubmit={handleSubmit}
-                    className="form-container"
-                    noValidate
-                >
-                    <label className="label" htmlFor="newTodo">
-                    </label>
-    
-                    <input 
-                        name="newTodo"
-                        value={newTodo || ''}
-                        onChange={handleChange}
-                        className="input"
-                        rows="1" />
-                    
-                    <button type="submit" className="button">
-                        Add
-                    </button>
-                </form>
-            </section>
-        </section>
-    )
-    
-    
+  return (
+    <section>
+      <section className="contents">
+        <form onSubmit={handleSubmit} className="form-container" noValidate>
+          <label className="label" htmlFor="newTodo"></label>
+
+          <input
+            name="newTodo"
+            value={newTodo || ""}
+            onChange={handleChange}
+            className="input"
+            rows="1"
+          />
+
+          <button type="submit" className="button">
+            Add
+          </button>
+        </form>
+      </section>
+    </section>
+  );
 }
-
-

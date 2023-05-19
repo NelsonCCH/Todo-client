@@ -1,0 +1,10 @@
+.input {
+  border-radius: 15px;
+  background-color: white;
+  padding: 10px;
+  margin-right: 10px;
+  min-width: 200px;
+  max-width: 500px;
+  overflow-wrap: break-word;
+  resize: none;
+}

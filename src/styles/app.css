@@ -3,30 +3,37 @@
   justify-content: space-between;
 }
 
-.todo-list-container, .done-list-container {
+.todo-list-container,
+.done-list-container {
   flex: 1;
   margin-right: 20px; /* Adjust the spacing as desired */
 }
-
 
 .todo-list-container {
   margin-right: 20px; /* Adjust the spacing as desired */
 }
 
-.create-todo-container {
+.create-todo-container .search-container {
   margin-top: 80px; /* Adjust the spacing as desired */
 }
 
 body {
   margin: 20vh auto;
-  width:800px;
+  width: 800px;
   align-items: center;
 }
 
 .App {
   border: 2px solid #000;
   padding: 20px;
-  background-color: rgb(220,220,220);
+  background-color: rgb(220, 220, 220);
   width: 100%; /* Adjust the width as desired */
   height: 100%; /* Adjust the height as desired */
+}
+
+.header,
+.search-create-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

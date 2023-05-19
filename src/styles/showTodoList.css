@@ -1,16 +1,22 @@
 .task-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .checkbox-container {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  margin-right: 20px;
 }
 
 .thick-line {
-    border: none;
-    height: 2px;
-    background-color: rgb(0, 0, 0);
-  }
+  border: none;
+  height: 2px;
+  background-color: rgb(0, 0, 0);
+  margin-bottom: 20px;
+}
