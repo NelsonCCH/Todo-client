@@ -1,5 +1,6 @@
 import "../styles/showTodoList.css";
 
+// List all received data in props
 export function TodoList(props) {
   function TodoTask({ data }) {
     const { _id, content, complete } = data;

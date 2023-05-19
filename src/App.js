@@ -1,6 +1,7 @@
 import "./styles/app.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "./config";
 import { TodoList } from "./components/showTodoList";
 import { DoneList } from "./components/showDoneList";
 import { CreateTodo } from "./components/createTodo";
@@ -21,9 +22,10 @@ function App() {
     done.content.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // get latest incomplete list of todos and update the state
   const fetchTodo = () => {
     axios
-      .get("http://localhost:3001/api/todo/pending_todo")
+      .get(`${API_BASE_URL}/pending_todo`)
       .then((res) => {
         console.log(res.data);
         setTodoList(res.data);
@@ -33,9 +35,10 @@ function App() {
       });
   };
 
+  // get latest completed list of todos and update the state
   const fetchDone = () => {
     axios
-      .get("http://localhost:3001/api/todo/done_todo")
+      .get(`${API_BASE_URL}/done_todo`)
       .then((res) => {
         console.log(res.data);
         setDoneList(res.data);
@@ -45,18 +48,21 @@ function App() {
       });
   };
 
+  // helper function to perform both fetch
   const fetchData = () => {
     fetchTodo();
     fetchDone();
   };
 
+  // fetch once when app first starts
   useEffect(() => {
     fetchData();
   }, []);
 
+  // send put request to toggle the completeness of the todo, then re-fetch both todo and done list
   const handleCheckBox = (id) => {
     axios
-      .put(`http://localhost:3001/api/todo/${id}`)
+      .put(`${API_BASE_URL}/${id}`)
       .then((res) => {
         console.log(`Toggle successful: ${res.data}`);
         fetchData();

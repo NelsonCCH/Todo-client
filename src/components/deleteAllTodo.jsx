@@ -1,10 +1,12 @@
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 
+// first confirm user with prompt, then send delete request and re-fetch both todo and done list
 export function DeleteAllTodo(props) {
   const handleDelete = () => {
     if (window.confirm("Are you sure you want to delete all todos?")) {
       axios
-        .delete("http://localhost:3001/api/todo")
+        .delete(`${API_BASE_URL}`)
         .then((res) => {
           props.fetchData();
           console.log(`All todos are deleted. ${res.data.message}`);

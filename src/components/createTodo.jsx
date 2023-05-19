@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 import "../styles/createTodo.css";
 
 export function CreateTodo(props) {
@@ -17,7 +18,7 @@ export function CreateTodo(props) {
     const data = { content: newTodo };
 
     axios
-      .post("http://localhost:3001/api/todo", data)
+      .post(`${API_BASE_URL}`, data)
       .then((res) => {
         setnewTodo("");
         props.fetchData();
@@ -38,7 +39,7 @@ export function CreateTodo(props) {
             name="newTodo"
             value={newTodo || ""}
             onChange={handleChange}
-            className="input"
+            className="new-todo-input"
             rows="1"
           />
 
