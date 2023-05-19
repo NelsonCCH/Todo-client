@@ -1,0 +1,27 @@
+.input {
+    border-radius: 15px;
+    background-color: white;
+    padding: 10px;
+    margin-right: 10px;
+    min-width: 200px; 
+    max-width: 500px;
+    overflow-wrap: break-word;
+    resize: none;
+}
+
+
+
+
+.button {
+    border-radius: 15px;
+    background-color: lightblue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+.form-container {
+    display: flex;
+    align-items: center;
+}
